@@ -146,7 +146,6 @@ def read_CCS811():
     except:
         error_handling('I2C communication error')
         exit()
-    print(buf_rx)
     eCO2 = buf_rx[0]*256+buf_rx[1]
     eTVOC = buf_rx[2]*256+buf_rx[3]
     print('eCO2:', eCO2)
