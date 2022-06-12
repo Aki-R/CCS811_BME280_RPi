@@ -4,19 +4,6 @@ import time
 import logging
 import numpy as np
 
-# Device ID
-CCS811_ADDRESS = 0x5B
-
-# Register Address for CCS811
-STATUS = 0x00
-MEAS_MODE = 0x01
-ALG_RESULT_DATA = 0x02
-ERROR_ID = 0xE0
-HW_ID = 0x20
-APP_START = 0xF4
-ENV_DATA = 0x05
-SW_RESET = 0XFF
-
 def error_handling(err_message):
     logging.basicConfig(filename='CCS811_BME280_RPi_Error.log', encoding='utf-8', level=logging.DEBUG, format='%(asctime)s %(levelname)s:%(message)s')
     logging.error(err_message)
@@ -26,6 +13,19 @@ def warning_handling(warning_message):
     logging.warning(warning_message)
 
 def read_CCS811():
+    # Device ID
+    CCS811_ADDRESS = 0x5B
+
+    # Register Address for CCS811
+    STATUS = 0x00
+    MEAS_MODE = 0x01
+    ALG_RESULT_DATA = 0x02
+    ERROR_ID = 0xE0
+    HW_ID = 0x20
+    APP_START = 0xF4
+    ENV_DATA = 0x05
+    SW_RESET = 0XFF
+
     i2c = smbus.SMBus(1)
 
     # i2c.write_byte_data(addr, 0x06, 0xF0)
